@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% load pages_tags mezzanine_tags %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block secondary_nav %}
+<div id="secondary-nav" class="inside-top">
+  <nav class="navbar navbar-custom navbar-fixed-top top-nav-collapse" role="navigation">
+    <div class="container">
+      <div class="row">
+        <div class="navbar-header page-scroll col-md-3">
+          <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+          </button> -->
+          <a class="navbar-brand" href="/"><h1>The Teaching Commons</h1></a>
+        <!-- Hamburger menu here -->
+          <div class="col-md-9">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#teach-design-menu">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div> <!-- end .col-md-9 -->
+        </div> <!-- end navbar-header -->
+
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- <div class="collapse navbar-collapse navbar-left navbar-main-collapse nav navbar-nav" data-toggle="collapse" id="teach-design-menu"> -->
+        <div class="collapse navbar-collapse navbar-left navbar-main-collapse nav navbar-nav col-md-9" id="teach-design-menu">
+          <ul class="nav navbar-nav">
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Designing a Course</a>
+              <ul class="dropdown-menu">
+                  {% page_menu "pages/menus/designing_dropdown.html" %}
+              </ul>
+            </li>
+
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Teaching a Course</a>
+              <ul class="dropdown-menu">
+                {% for p in teach_page_list %}
+                <li class="nav-item{% if page.title == p.title %} active{% endif %}"><a href="/{{ p.path }}">{{ p.title }}</a></li>
+                  {% endfor %}
+              </ul>
+            </li>
+          </ul>
+        </div> <!-- end #teach-design-menu -->
+      </div> <!-- end row -->
+    </div> <!-- /.container -->
+  </nav>
+</div> <!-- end #secondary-nav -->
+{% endblock %}
+
+{% block main %}
+<div class="container">
+  <div class="row">
+
+
+    <nav class="col-md-3 col-sm-12" id="handbook-nav" role="navigation">
+      <ul class="list-unstyled teaching-nav">
+      <!-- <ul class="list-unstyled teaching-nav" data-spy="affix" data-offset-top="50" data-offset-bottom="750"> -->
+      <div class="col-sm-4 col-md-12">
+        <li class="nav-header"><a href="https://cndls.georgetown.edu/newfaculty/">New Faculty FAQs</a>
+            <ul class="list-unstyled teaching-nav">
+                <li class="nav-item small"><a href="https://cndls.georgetown.edu/newfaculty/#studentinteraction">Student Interaction</a></li>
+                <li class="nav-item small"><a href="https://cndls.georgetown.edu/newfaculty/#courselogistics">Course Logistics</a></li>
+                <li class="nav-item small"><a href="https://cndls.georgetown.edu/newfaculty/#universitypolicy">University Policy</a></li>
+                <li class="nav-item small"><a href="https://cndls.georgetown.edu/newfaculty/#teacherdevelopment">Teacher Development</a></li>
+                <li class="nav-item small"><a href="https://cndls.georgetown.edu/newfaculty/#otherinformation">Other Information</a></li>
+            </ul>
+        </li>
+        <li class="nav-header"><a href="/glossary">Teaching Terms</a>
+            <!-- <ul class="list-unstyled teaching-nav">
+                <li class="nav-item small">Active Learning</li>
+                <li class="nav-item small">Backward Design</li>
+                <li class="nav-item small">Cognitive Apprenticeship</li>
+                <li class="nav-item small">Community of practice</li>
+                <li class="nav-item small">Community-based learning</li>
+                <li class="nav-item small">&hellip;</li>
+            </ul> -->
+        </li>
+        <li class="nav-item">
+        <div class="btn-group">
+          <a href="/glossary#a" class="btn btn-default btn-xs">A-F</a>
+          <a href="/glossary#g" class="btn btn-default btn-xs">G-L</a>
+          <a href="/glossary#m" class="btn btn-default btn-xs">M-R</a>
+          <a href="/glossary#s" class="btn btn-default btn-xs">S-Z</a></div></li>
+      </div>
+      </ul>
+    </nav><!-- /.col -->
+
+    <div class="col-md-9 article-wrap">
+    {% block page %}
+      {{ block.super }}
+      <h1 class="lead page-title">{% editable page.title %}{{ page.title }}{% endeditable %}</h1>
+      <p class="tagline">{% editable page.tagline %}{{ page.tagline }}{% endeditable %}</p>
+      <div class="row">
+      {% editable page.richtextpage.content %}
+      {{ page.richtextpage.content|richtext_filters|safe }}
+      {% endeditable %}
+      </div>
+    {% endblock %}
+
+      <div>
+        <p>Please reach out to us at <a href="mailto:cndls@georgetown.edu">cndls@georgetown.edu</a> if you'd like to have a conversation with someone at CNDLS about these or other teaching issues.
+        </p>
+      </div>
+    </div><!-- /.col -->
+
+  </div><!-- /.row -->
+
+</div><!-- /.container -->
+
+{% endblock %}

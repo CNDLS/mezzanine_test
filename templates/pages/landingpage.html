@@ -1,0 +1,23 @@
+{% extends "pages/richtextpage.html" %}
+
+
+{% block page %}
+<div id="paper2">
+    <div id="first-deck" class="container">
+
+        <div class="row">
+        {% for itm in gallery_items %}
+          <a href="/teaching/design_learning_goals/">
+          <div class="col-md-4">
+              <div class="pane">
+              {{ itm.content|safe }}
+              </div>
+          </div>
+          </a>
+        {% endfor %}
+        </div><!-- /.row -->
+
+    </div><!-- /#majorprojects .container -->
+
+</div>
+{% endblock %}

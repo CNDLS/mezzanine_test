@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load mezzanine_tags staticfiles %}
+
+{% block title %}CNDLS at Georgetown University{% endblock %}
+
+{% block body %}
+<style type="text/css">
+#feature {
+    background: url('{{ MEDIA_URL }}uploads/img/tc-splash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: scroll;
+    min-height: 450px;
+    margin-top: -50px;
+}
+</style>
+
+<div id="feature">
+<div class="container">
+<div class="row">
+
+    <div class="col-md-12" id="tc-splash">
+    <h1 class="landing-title" id="tc-title">The Teaching Commons</h1>
+    </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <p class="tagline">Resources related to teaching, including tools for designing your courses, examples from faculty, and suggestions for further reading on a range of pedagogical topics. Applicable to all disciplines and open to anyone.</p>
+  </div>
+</div><!-- /.row -->
+</div>
+</div>
+
+<style>
+h3 { margin-top: 30px; color: #ccc; }
+</style>
+
+<div id="paper2">
+    <div id="first-deck" class="container">
+
+        <div class="row">
+
+            <a href="/designing">
+            <div class="col-md-4">
+                <div class="pane">
+                <p><img src="{{ MEDIA_URL }}uploads/img/tc-planning.jpg" class="img-responsive" /></p>
+                <h3>Designing a Course</h3>
+                <p>Learn how to design effective learning goals, assessment activities, and syllabi for your courses.</p>
+                </div>
+            </div>
+            </a>
+
+            <a href="">
+            <div class="col-md-4">
+                <div class="pane">
+                <p><img src="{{ MEDIA_URL }}uploads/img/tc-facilitating.jpg" class="img-responsive" /></p>
+                <h3>Teaching a Course</h3>
+                <p>Learn how to manage discussions, create engaging lectures, use technology, and assess students.</p>
+                </div>
+            </div>
+            </a>
+            
+            <a href="">
+            <div class="col-md-4">
+                <div class="pane">
+                <p><img src="{{ MEDIA_URL }}uploads/img/tc-modifying.jpg" class="img-responsive" /></p>
+                <h3>Teaching Terms</h3>
+                <p>Look up definitions of key teaching terms complete with excerpts from teaching and learning sources.</p>
+                </div>
+            </div>
+            </a>
+        </div><!-- /.row -->
+
+    </div><!-- /#majorprojects .container -->
+
+</div><!-- /#darkstripes -->
+
+
+
+{% endblock %}
