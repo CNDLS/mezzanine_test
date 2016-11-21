@@ -93,8 +93,8 @@
     <div class="col-md-9 article-wrap">
     {% block page %}
       {{ block.super }}
-      <h1 class="lead page-title">{% editable page.title %}{{ page.title }}{% endeditable %}</h1>
-      <p class="tagline">{% editable page.tagline %}{{ page.tagline }}{% endeditable %}</p>
+      <h1 class="page-title">{% editable page.title %}{{ page.title }}{% endeditable %}</h1>
+      {% editable page.tagline %}<p class="lead">{{ page.tagline }}</p>{% endeditable %}
       <div class="row">
       {% editable page.richtextpage.content %}
       {{ page.richtextpage.content|richtext_filters|safe }}
